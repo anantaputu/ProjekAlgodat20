@@ -1,3 +1,5 @@
+package util;
+
 public class Dialog {
   String dialog;
   Dialog next;

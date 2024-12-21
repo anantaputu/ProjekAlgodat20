@@ -27,8 +27,18 @@ public class ListItem {
       return null;
     }
 
-    entity.Item current = head;
+    Item current = head;
     Item temp = null;
+
+    if (head.nama.equals(choice)) {
+      if (head.isReusable == true) {
+        return head;
+      } else {
+        Item returnItem = head;
+        head = head.next;
+        return returnItem;
+      }
+    }
 
     while (current != null) {
       if (current.nama.equals(choice)) {
@@ -44,8 +54,6 @@ public class ListItem {
       temp = current;
       current = current.next;
     }
-
-    System.out.println("Item tidak ditemukan!");
     return null;
   }
 
@@ -69,7 +77,7 @@ public class ListItem {
       Item current = head;
 
       while (current.next != null) {
-        if (current.effect > current.next.effect) {
+        if (current.effect < current.next.effect) {
           // Tukar data antar node
           int tempEffect = current.effect;
           String tempNama = current.nama;

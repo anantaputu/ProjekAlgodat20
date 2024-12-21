@@ -17,13 +17,28 @@ public class Player extends Karakter {
     return item.hapusItem(choice);
   }
 
-  public void sort () {
+  public void sortItem () {
     item.bubbleSort();
-    Item current = item.head;
-    System.out.println("Item milik " + this.name);
-    while (current != null) {
-      System.out.println(current.nama + " -> " + current.type + " -> " + current.effect);
-      current = current.next;
+    item.displayItem();
+
+    if (item.head.isReusable) {
+      this.power += item.head.effect;
+      System.out.println("Power bertambah: " + item.head.effect);
+      this.power -= item.head.effect;
+    } else {
+      switch (item.head.type) {
+        case "power":
+          this.power += item.head.effect;
+          System.out.println("Power " + this.name + " menjadi " + this.power);
+        case "energy":
+          this.energy += item.head.effect;
+          System.out.println("Energy " + this.name + " menjadi " + this.energy);
+        case "health":
+          this.health = Math.min(100, this.health + item.head.effect);
+          System.out.println("Health " + this.name + " menjadi " + this.health);
+        default:
+          item.head = item.head.next;
+      }
     }
   }
 }

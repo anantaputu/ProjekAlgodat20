@@ -29,11 +29,21 @@ public class QueuePlayer {
     return nodePlayer;
   }
 
+  public void displayQueue(Player playerBattle) {
+    NodePlayer current = front;
+    while (current != null) {
+      if (!current.equals(playerBattle)) {
+        System.out.println(current.nodePlayer.name + " [Health: " + current.nodePlayer.health + ", Energy: " + current.nodePlayer.health + "]");
+      }
+      current = current.next;
+    }
+  }
+
   public int sizeQueue() {
     NodePlayer current = front;
     int sum = 0;
     while (current != null) {
-      sum++;
+      sum += 1;
       current = current.next;
     }
     return sum;

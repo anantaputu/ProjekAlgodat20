@@ -8,10 +8,6 @@ public class Monster extends Karakter {
     this.monsterType = monsterType;
   }
 
-  public void performAction(String action) {
-    System.out.println(this.name + " is performing action: " + action);
-  }
-
   @Override
   public void showKarakterInfo() {
     super.showKarakterInfo();

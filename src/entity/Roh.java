@@ -7,8 +7,4 @@ public class Roh extends Karakter {
     super(name, health, energy, power, personality);
     this.derajat = derajat;
   }
-
-  public void performAction(String action) {
-    System.out.println(this.name + " is performing action: " + action);
-  }
 }

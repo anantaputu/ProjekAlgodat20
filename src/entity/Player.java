@@ -1,23 +1,29 @@
 package entity;
 
+import util.ListItem;
+
 public class Player extends Karakter {
-  String role;
-  String goal;
+  public ListItem item = new ListItem();
 
-  public Player(String name, String role, int health, int energy, int power, String personality, String goal) {
+  public Player(String name, int health, int energy, int power, String personality) {
     super(name, health, energy, power, personality);
-    this.role = role;
-    this.goal = goal;
   }
 
-  @Override
-  public void showKarakterInfo() {
-    super.showKarakterInfo();
-    System.out.println("Role: " + this.role);
-    System.out.println("Goal: " + this.goal);
+  public void addItem (String nama, String type, int effect, boolean isReusable) {
+    item.addItem(nama, type, effect, isReusable);
   }
 
-  public void performAction(String action) {
-    System.out.println(this.name + " is performing action: " + action);
+  public Item hapusItem (String choice) {
+    return item.hapusItem(choice);
+  }
+
+  public void sort () {
+    item.bubbleSort();
+    Item current = item.head;
+    System.out.println("Item milik " + this.name);
+    while (current != null) {
+      System.out.println(current.nama + " -> " + current.type + " -> " + current.effect);
+      current = current.next;
+    }
   }
 }
